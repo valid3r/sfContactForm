@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Hello Test Title
+{% endblock %}
+{% block body %}
+<div class="container">
+<div class="row flex-nowrap">
+   <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark" style="min-width: 235px;">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+         <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+         <span class="fs-5 d-none d-sm-inline">tecnoConcept</span>
+         </a>
+         {% include "navigation.html.twig" %}
+         <hr>
+      </div>
+   </div>
+   <div class="col py-3 content px-4" style="overflow: auto;">
+      <div class="formular mt-4 ">
+         <h3 class="mb-5">Kontaktformular</h3>
+         <form onsubmit="submitData(this, event)" class="row g-3">
+            <h6>SMTP CONFIG</h6>
+            <hr>
+            <div class="col-md-6">
+               <label for="inputCity" class="form-label">SMTP server address</label>
+               <input type="text" class="form-control" placeholder="smtp.gmail.com" id="smtpAdress" value="" required>
+            </div>
+            <div class="col-md-6">
+               <label for="inputCity" class="form-label">SMTP port</label>
+               <input type="text" class="form-control" placeholder="465" id="smtpPort" value="25" required>
+            </div>
+            <div class="col-md-6">
+               <label for="inputCity" class="form-label">SMTP username</label>
+               <input type="text" class="form-control" placeholder="you@gmail.com" id="smtpUsername" value="" required>
+            </div>
+            <div class="col-md-6">
+               <label for="inputCity" class="form-label">SMTP password</label>
+               <input type="password" class="form-control" placeholder="fh1YKg24grASMOD" id="smtpPassword" value="" required>
+            </div>
+            <h6 class="mt-5">MESSAGE</h6>
+            <hr>
+            <div class="col-md-6">
+               <label for="inputEmail4" class="form-label">Name</label>
+               <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="col-md-6">
+               <label for="inputPassword4" class="form-label">Nachname</label>
+               <input type="text" class="form-control" id="nachname" required>
+            </div>
+            <div class="col-md-6">
+               <label for="inputEmail4" class="form-label">From:</label>
+               <input type="email" class="form-control" id="email" value="" required>
+            </div>
+            <div class="col-md-6">
+               <label for="inputEmail4" class="form-label">To:</label>
+               <input type="email" class="form-control" id="to_email" value="" required>
+            </div>
+            <div class="col-md-12">
+               <label for="inputEmail4" class="form-label">Subject</label>
+               <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="col-12">
+               <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+               <textarea class="form-control" id="message" rows="3" required></textarea>
+            </div>
+            <div class="col-12">
+               <button type="submit" class="float-end btn btn-primary">Senden</button>
+            </div>
+         </form>
+      </div>
+
+
+    {% include "indexModals.html.twig" %}
+
+
+   </div>
+</div>
+{% endblock %}

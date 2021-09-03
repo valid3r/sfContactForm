@@ -1,0 +1,16 @@
+{% for contact in contacts %}
+<tr>
+    <td class="align-middle"> {{contact.id}} </td>
+    <td class="align-middle"> {{contact.firstname}} </td>
+    <td class="align-middle"> {{contact.lastname}} </td>
+    <td class="align-middle"> {{contact.toEmail}} </td>
+    <td class="align-middle"> {{contact.emailSubject}} </td>
+    <td class="align-middle" style="width:100px">
+    {{ contact.dateCreated | date('d.m.Y') }}
+</td>
+<td class="align-middle">      
+    <button type="button" class="btn btn-primary" onclick="getContactInfo({{contact.id}})"/>Show</button>
+    <button type="button" class="btn btn-danger" onclick="deleteContact({{contact.id}})"/>Delete</button>
+</td>
+</tr>
+{% endfor %}

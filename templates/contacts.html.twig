@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Hello Test Title
+{% endblock %}
+{% block body %}
+<div class="container">
+<div class="row flex-nowrap">
+   <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark" style="min-width: 235px;">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+         <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+         <span class="fs-5 d-none d-sm-inline">tecnoConcept</span>
+         </a>
+         {% include "navigation.html.twig" %}
+         <hr>
+      </div>
+   </div>
+
+   <div class="col py-3 content px-4" style="overflow: auto;">
+      <div class="formular mt-4 ">
+         <h3 class="mb-5">Gespeicherte E-Mails</h3>
+         <form class="row g-3">
+         <div class="row">
+            <div class="col">
+               <h6>EMAILS</h6>
+            </div>
+            <div class="col">
+               <button type="button" style="float:right" onclick="deleteOlderThan2Weeks()"  class="btn btn-warning">Delete Older Than 2 Weeks</button>
+            </div>
+         </div>
+         <hr>
+         <div class="col-md-12">
+            <div class="table-responsive">
+               <table class="table table-striped">
+                  <thead>
+                     <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Vorname</th>
+                        <th scope="col">Nachname</th>
+                        <th scope="col">To</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Date Send</th>
+                        <th scope="col">...</th>
+                     </tr>
+                  </thead>
+                  <tbody id="table-data">
+                     {% for contact in contacts %}
+                     <tr>
+                           <td class="align-middle"> {{contact.id}} </td>
+                           <td class="align-middle"> {{contact.firstname}} </td>
+                           <td class="align-middle"> {{contact.lastname}} </td>
+                           <td class="align-middle"> {{contact.toEmail}} </td>
+                           <td class="align-middle"> {{contact.emailSubject}} </td>
+                           <td class="align-middle" style="width:100px">
+                           {{ contact.dateCreated | date('d.m.Y') }}
+                        </td>
+                        <td class="align-middle">      
+                           <button type="button" class="btn btn-primary" onclick="getContactInfo({{contact.id}})"/>Show</button>
+                           <button type="button" class="btn btn-danger" onclick="deleteContact({{contact.id}})"/>Delete</button>
+                        </td>
+                        </tr>
+                     {% endfor %}
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+{% endblock %}
